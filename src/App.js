@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Favourites from './components/Favourites';
 
 function App() {
+  const arr = [1,2,3,4];
   return (
     <BrowserRouter>
       <NavBar> </NavBar>
