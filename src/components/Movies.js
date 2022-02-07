@@ -2,13 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Image from "../banner.jpg";
 import axios from "axios";
 import { Oval } from "react-loader-spinner";
+import Pagination from './Pagination';
 
 function Movies() {
  
- const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState([]);
+    let [pageNumber, setState] = useState(1);
+
+    function increment(){
+        setState(pageNumber + 1);
+    }
+
+    function decrement(){
+        if(pageNumber > 1){
+            setState(pageNumber - 1);
+        }
+    }
+
 
  useEffect(function(){
-    axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=5984df98ddb29f07afe65af3db9ac90c")
+    axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=5984df98ddb29f07afe65af3db9ac90c&page=${pageNumber}`)
         .then((res)=>
 
            {  
@@ -54,6 +67,8 @@ function Movies() {
 
         }   
     </div>
+
+    <Pagination currentPage = {pageNumber} increment = {increment} decrement = {decrement}></Pagination >
   </>;
 }
 

@@ -16,7 +16,6 @@ function App() {
         <Route path='/' element={<>
             <Banner></Banner>
             <Movies></Movies>
-            <Pagination></Pagination>
         </>} />
         
         <Route path='/favourites' element={<Favourites></Favourites>} />
